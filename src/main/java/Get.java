@@ -17,6 +17,16 @@ public class Get {
         return sc.nextInt();
     }
 
+    public static int getInteger(String message) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(message);
+        while(!sc.hasNextInt()){
+            System.out.print("                                                                 " + ANSI_RED + "¡¡ ERROR, WRITE A INTEGER NUMBER !! " + ANSI_RESET);
+            sc.next();
+        }
+        return sc.nextInt();
+    }
+
     public static String getCoordinate() {
 
         Scanner sc = new Scanner(System.in);
