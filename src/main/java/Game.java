@@ -62,9 +62,6 @@ public class Game {
         Put.putBombs(board);
         Put.putNumbers(board);
 
-        Visualize.showBoard(board);
-        System.out.println();
-
         Visualize.showBoard(boardPlayer);
         System.out.println();
 
@@ -72,14 +69,14 @@ public class Game {
 
         do {
 
-            System.out.println(ANSI_BLUE + "* CHOOSE AN OPTION *" + ANSI_RESET);
+            System.out.println("                                                                     " + BLUE_BACKGROUND + ANSI_BLACK + "  * CHOOSE AN OPTION *  " + ANSI_RESET);
+            System.out.println();
 
             if (countMines != 0) {
-                System.out.println(ANSI_CYAN + "1" + ANSI_RESET + " - Select position");
-                num = Get.getIntegerBelow(ANSI_CYAN + "2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ")");
+                num = Get.getInteger("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
 
                 while (num > 2 || num < 1) {
-                    num = Get.getIntegerBelow(Get.ANSI_RED + "¡¡ ERROR NUMBER, WRITE 1 OR 2 !!" + ANSI_RESET);
+                    num = Get.getInteger("                                                                  " + Get.ANSI_RED + "¡¡ ERROR NUMBER, WRITE 1 OR 2 !! " + ANSI_RESET);
                 }
 
             } else {
@@ -90,9 +87,6 @@ public class Game {
                 }
             }
 
-
-            System.out.println();
-
             String coordinate = Get.getCoordinate();
 
             while (Coordinate.wrongLenght(coordinate) ||
@@ -100,7 +94,7 @@ public class Game {
                     Coordinate.numberError(coordinate.charAt(1)) ||
                     boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
 
-                System.out.println(ANSI_RED + "¡¡ COORDINATE ERROR !!" + ANSI_RESET);
+                System.out.println(ANSI_RED + "                                                             ¡¡ COORDINATE ERROR !!" + ANSI_RESET);
                 coordinate = Get.getCoordinate();
             }
 
@@ -118,6 +112,8 @@ public class Game {
                 countMines--;
             }
 
+            System.out.println();
+            System.out.println();
             Visualize.showBoard(boardPlayer);
             System.out.println();
 
@@ -126,6 +122,5 @@ public class Game {
         if (Put.collisionBomb(board, letter, number)) {
             System.out.println("¡¡¡ BOOOOOOM !!!");
         }
-
     }
 }

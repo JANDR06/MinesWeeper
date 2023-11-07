@@ -27,19 +27,24 @@ public class Visualize {
                     System.out.print(ANSI_RED_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
                 } else if (i < 8 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ANSI_CYAN_BACKGROUND + ANSI_YELLOW + " " + board[i][j] + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_YELLOW + " " + board[i][j] + " " + ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ANSI_CYAN_BACKGROUND + ANSI_WHITE + " " + board[i][j] + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_GREEN + " " + board[i][j] + " " + ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ANSI_CYAN_BACKGROUND + ANSI_BLUE + " " + board[i][j] + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_BLUE + " " + board[i][j] + " " + ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ANSI_CYAN_BACKGROUND + ANSI_PURPLE + " " + board[i][j] + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_PURPLE + " " + board[i][j] + " " + ANSI_RESET);
                     } else {
-                        System.out.print(ANSI_CYAN_BACKGROUND + ANSI_PURPLE + " " + board[i][j] + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREY_BACKGROUND  + " " + board[i][j] + " " + ANSI_RESET);
                     }
 
                 } else {
-                    System.out.print(" " + board[i][j] + " ");
+                    if (j == 0) {
+                        System.out.print("                                                                 " + board[i][0] + " ");
+                    } else {
+                        System.out.print(" " + board[i][j] + " ");
+                    }
+
                 }
 
             }
