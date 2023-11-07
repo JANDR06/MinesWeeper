@@ -8,6 +8,7 @@ public class Game {
     public static final String ANSI_BLACK = "\u001B[30m";
 
 
+
     public static void main(String[] args) {
         menu();
     }
