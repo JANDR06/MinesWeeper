@@ -66,9 +66,6 @@ public class Game {
                 Put.putBombsMedium(board);
                 Put.putNumbers(board);
 
-                Visualize.showBoardMedium(board);
-                System.out.println();
-                System.out.println();
                 Visualize.showBoardMedium(boardPlayer);
 
                 countMines = 40;
@@ -95,6 +92,8 @@ public class Game {
                  */
             }
 
+        } else {
+            System.out.println();
             System.out.println("                                                                         " + BLUE_BACKGROUND + ANSI_BLACK + "  SEE YOU SOON !  " + ANSI_RESET);
         }
     }
@@ -154,9 +153,9 @@ public class Game {
                 }
             }
 
-            String coordinate = Input.getCoordinate();
-
             if (level == 1) {
+                String coordinate = Input.getCoordinate();
+
                 while (Coordinate.wrongLenght(coordinate) ||
                         Coordinate.letterErrorEasy(coordinate.charAt(0)) ||
                         Coordinate.numberErrorEasy(coordinate.charAt(1)) ||
@@ -169,34 +168,26 @@ public class Game {
                 System.out.println();
 
                 letter = coordinate.charAt(0) - 65;
-                number = coordinate.charAt(1) - 47;
+                number = coordinate.charAt(1) - 50;
 
             } else if (level == 2) {
+                String coordinate = Input.getCoordinateTwo();
 
                 while (Coordinate.wrongLenght(coordinate) ||
                         Coordinate.letterErrorMedium(coordinate.charAt(0)) ||
-                        Coordinate.numberErrorMedium(coordinate.charAt(1)) ||
-                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
+                        Coordinate.letter2ErrorMedium(coordinate.charAt(1))) {
 
                     System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
-                    coordinate = Input.getCoordinateMedium();
+                    coordinate = Input.getCoordinateTwo();
                 }
 
                 System.out.println();
 
                 letter = coordinate.charAt(0) - 65;
-
-                if (number < 58) {
-                    number = coordinate.charAt(1) - 47;
-                } else {
-                    number = coordinate.charAt(1) - 96;
-                }
+                number = coordinate.charAt(1) - 64;
             }
 
-
-
             if (num == 1) {
-
                 boardPlayer[letter][number] = board[letter][number];
 
             } else {
@@ -206,7 +197,12 @@ public class Game {
 
             System.out.println();
             System.out.println();
-            Visualize.showBoardEasy(boardPlayer);
+
+            if (level == 1) {
+                Visualize.showBoardEasy(boardPlayer);
+            } else if (level == 2) {
+                Visualize.showBoardMedium(boardPlayer);
+            }
             System.out.println();
 
         } while (!Put.collisionBomb(board, letter, number) || num == 2);
@@ -217,7 +213,13 @@ public class Game {
 
             System.out.println("                                                                          " + RED_BACKGROUND + "  BOOOOOOM !  " + ANSI_RESET);
             System.out.println();
-            Visualize.showBoardEasy(boardPlayer);
+
+            if (level == 1) {
+                Visualize.showBoardEasy(boardPlayer);
+            } else if (level == 2) {
+                Visualize.showBoardMedium(boardPlayer);
+            }
+
             System.out.println();
         }
     }

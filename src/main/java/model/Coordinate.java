@@ -14,12 +14,12 @@ public class Coordinate {
         return letter < 'A' || letter > 'N';
     }
 
+    public static boolean letter2ErrorMedium(char letter) {
+        return letter < 'A' || letter > 'P';
+    }
+
     public static boolean numberErrorEasy(char number) {
         return number < '0' || number > '9';
     }
 
-    public static boolean numberErrorMedium(char number) {
-
-        return (number < '0' || number > '9') && (number < 'a' || number > 'f');
-    }
 }
