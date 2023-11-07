@@ -79,6 +79,41 @@ public class Visualize {
         }
     }
 
+    public static void showBoardHard(char[][] board) {
+
+        for (int i = 0; i  < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+
+                if (board[i][j] ==  '*') {
+                    System.out.print(ANSI_RED_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
+                } else if (i < 20 && j > 0) {
+                    if (board[i][j] == '1') {
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_YELLOW + " " + board[i][j] + " " + ANSI_RESET);
+                    } else if (board[i][j] == '2') {
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_GREEN + " " + board[i][j] + " " + ANSI_RESET);
+                    } else if (board[i][j] == '3') {
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_BLUE + " " + board[i][j] + " " + ANSI_RESET);
+                    } else if (board[i][j] == '4') {
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_PURPLE + " " + board[i][j] + " " + ANSI_RESET);
+                    } else if (board[i][j] == '5') {
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_RED + " " + board[i][j] + " " + ANSI_RESET);
+                    } else {
+                        System.out.print(ANSI_GREY_BACKGROUND  + " " + board[i][j] + " " + ANSI_RESET);
+                    }
+
+                } else {
+
+                    if (j == 0) {
+                        System.out.print("                                             " + board[i][0] + " ");
+                    } else {
+                        System.out.print(" " + board[i][j] + " ");
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public static void showBombs(char[][] board , char[][] boardPlayer) {
 
         for (int i = 0; i < boardPlayer.length; i++) {

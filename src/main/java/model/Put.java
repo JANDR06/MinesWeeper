@@ -35,6 +35,23 @@ public class Put {
         }
     }
 
+    public static void putBombsHard(char[][] board) {
+
+        int bombs = 99;
+        int positionX, positionY;
+
+        while (bombs > 0) {
+
+            positionX = (int) (Math.random() * 19) + 1;
+            positionY = (int) (Math.random() * 23) + 1;
+
+            if (!collisionBomb(board, positionX, positionY)) {
+                board[positionX][positionY] = '*';
+                bombs--;
+            }
+        }
+    }
+
     public static void putNumbers(char[][] board) {
 
         for (int i = 0; i < board.length - 1; i++) {
@@ -42,7 +59,9 @@ public class Put {
 
                 if (board[i][j] != '*') {
 
-                    if (countBombs(board, i, j) == 5) {
+                    if (countBombs(board, i, j) == 6) {
+                        board[i][j] = '5';
+                    } else if (countBombs(board, i, j) == 5) {
                         board[i][j] = '5';
                     } else if (countBombs(board, i, j) == 4) {
                         board[i][j] = '4';

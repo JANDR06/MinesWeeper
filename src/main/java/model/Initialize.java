@@ -53,4 +53,30 @@ public class Initialize {
             }
         }
     }
+
+    public static void initializePlayerBoardHard(char[][] board) {
+
+        char letter = 'A';
+        char letter2 = 'A';
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+
+                if (i == 20 && j == 0) {
+                    board[i][j] = ' ';
+
+                } else if (i == 20) {
+                    board[i][j] = letter2;
+                    letter2++;
+
+                } else if (i < 20 && j == 0) {
+                    board[i][j] = letter;
+                    letter++;
+
+                } else {
+                    board[i][j] = '-';
+                }
+            }
+        }
+    }
 }

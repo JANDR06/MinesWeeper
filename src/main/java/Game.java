@@ -73,23 +73,22 @@ public class Game {
                 game(board, boardPlayer, countMines, level);
 
             } else {
-                /*
-                char[][] board = new char[9][11];
-                char[][] boardPlayer = new char[9][11];
 
-                Initialize.initializePlayerBoardEasy(board);
-                Initialize.initializePlayerBoardEasy(boardPlayer);
+                char[][] board = new char[21][25];
+                char[][] boardPlayer = new char[21][25];
 
-                Put.putBombsEasy(board);
+                Initialize.initializePlayerBoardHard(board);
+                Initialize.initializePlayerBoardHard(boardPlayer);
+
+                Put.putBombsHard(board);
                 Put.putNumbers(board);
 
-                Visualize.showBoardEasy(boardPlayer);
+                Visualize.showBoardHard(boardPlayer);
 
                 countMines = 99;
 
-                game(board, boardPlayer, countMines);
+                game(board, boardPlayer, countMines, level);
 
-                 */
             }
 
         } else {
@@ -103,7 +102,7 @@ public class Game {
         System.out.println("                          " + ANSI_BLUE + "------------------------------------------      " + ANSI_RESET + BLUE_BACKGROUND + ANSI_BLACK + "  INSTRUCTIONS  " + ANSI_RESET + ANSI_BLUE + "      ------------------------------------------" + ANSI_RESET);
         System.out.println();
         System.out.println("                          -" + ANSI_CYAN + " Objective" + ANSI_RESET + ": The objective of the game is to clear the playing field without activating any mines. The playing\n                            field is divided into squares, some of which contain mines and some of which do not.");
-        System.out.println("                          -" + ANSI_CYAN + " Mines" + ANSI_RESET + ": Some boxes contain mines, and the player must not click on them. If you click on a mine, you lose the\n                            game. The number of mines is 10.");
+        System.out.println("                          -" + ANSI_CYAN + " Mines" + ANSI_RESET + ": Some boxes contain mines, and the player must not click on them. If you click on a mine, you lose the\n                            game. The number of mines is 10 / 40 / 99.");
         System.out.println("                          -" + ANSI_CYAN + " Safe spaces" + ANSI_RESET + ": The game begins with all spaces hidden. The player must click on a square to reveal it. If the\n                            revealed space does not contain a mine, it will display a number indicating how many mines are in the adjacent\n                            spaces.");
         System.out.println("                          -" + ANSI_CYAN + " Opening rules" + ANSI_RESET + ": If you click on an empty space without a mine, all adjacent empty spaces will be revealed until\n                            they reach a number. This can help open up large areas of the playing field safely.");
         System.out.println("                          -" + ANSI_CYAN + " Win" + ANSI_RESET + ": The game is won when all safe spaces have been revealed without activating any mines. The goal is to\n                            clear the playing field safely and efficiently.");
