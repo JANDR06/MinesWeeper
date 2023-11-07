@@ -18,13 +18,33 @@ public class Put {
         }
     }
 
-    public static void putNumbersEasy(char[][] board) {
+    public static void putBombsMedium(char[][] board) {
+
+        int bombs = 40;
+        int positionX, positionY;
+
+        while (bombs > 0) {
+
+            positionX = (int) (Math.random() * 13) + 1;
+            positionY = (int) (Math.random() * 15) + 1;
+
+            if (!collisionBomb(board, positionX, positionY)) {
+                board[positionX][positionY] = '*';
+                bombs--;
+            }
+        }
+    }
+
+    public static void putNumbers(char[][] board) {
 
         for (int i = 0; i < board.length - 1; i++) {
             for (int j = 1; j < board[0].length; j++) {
 
                 if (board[i][j] != '*') {
-                    if (countBombs(board, i, j) == 4) {
+
+                    if (countBombs(board, i, j) == 5) {
+                        board[i][j] = '5';
+                    } else if (countBombs(board, i, j) == 4) {
                         board[i][j] = '4';
                     } else if (countBombs(board, i, j) == 3) {
                         board[i][j] = '3';

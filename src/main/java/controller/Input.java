@@ -42,4 +42,13 @@ public class Input {
 
         return coordinate;
     }
+
+    public static String getCoordinateMedium() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("                                                    " + ANSI_BLUE + "Enter a coordinate" + ANSI_RESET + " (Example 'D5' / 'd5')" + ANSI_BLUE + ": " + ANSI_RESET);
+
+        return sc.next();
+    }
 }
