@@ -52,18 +52,15 @@ public class Visualize {
         }
     }
 
-    public static void showBoardPlayer(char[][] board) {
+    public static void showBombs(char[][] board , char[][] boardPlayer) {
 
-        for (int i = 0; i  < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (i < 8 && j > 0) {
-                    System.out.print(ANSI_GREEN_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
-                } else {
-                    System.out.print(" " + board[i][j] + " ");
+        for (int i = 0; i < boardPlayer.length; i++) {
+            for (int j = 0; j < boardPlayer[0].length; j++) {
+
+                if (board[i][j] == '*') {
+                    boardPlayer[i][j] = '*';
                 }
-
             }
-            System.out.println();
         }
     }
 

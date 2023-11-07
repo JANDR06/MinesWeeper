@@ -21,7 +21,21 @@ public class Get {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
         while(!sc.hasNextInt()){
-            System.out.print("                                                                 " + ANSI_RED + "¡¡ ERROR, WRITE A INTEGER NUMBER !! " + ANSI_RESET);
+            System.out.print("                                                                 " + ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! " + ANSI_RESET);
+            System.out.println();
+            System.out.print(message);
+            sc.next();
+        }
+        return sc.nextInt();
+    }
+
+    public static int getIntegerTwo(String message) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(message);
+        while(!sc.hasNextInt()){
+            System.out.print("                                                                 " + ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! " + ANSI_RESET);
+            System.out.println();
+            System.out.print(message);
             sc.next();
         }
         return sc.nextInt();

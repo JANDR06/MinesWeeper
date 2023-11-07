@@ -5,6 +5,7 @@ public class Game {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String BLUE_BACKGROUND = "\033[44m";
+    public static final String RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_BLACK = "\u001B[30m";
 
 
@@ -22,7 +23,8 @@ public class Game {
         int number = Get.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
 
         while (number > 2 || number < 1) {
-            number = Get.getInteger("                                                                  " + Get.ANSI_RED + "¡¡ ERROR NUMBER, WRITE 1 OR 2 !! " + ANSI_RESET);
+            System.out.println("                                                                  " + Get.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
+            number = Get.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
         }
 
         if (number == 1) {
@@ -73,17 +75,19 @@ public class Game {
             System.out.println();
 
             if (countMines != 0) {
-                num = Get.getInteger("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+                num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
 
                 while (num > 2 || num < 1) {
-                    num = Get.getInteger("                                                                  " + Get.ANSI_RED + "¡¡ ERROR NUMBER, WRITE 1 OR 2 !! " + ANSI_RESET);
+                    System.out.println("                                                                  " + Get.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
+                    num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
                 }
 
             } else {
-                num = Get.getIntegerBelow(ANSI_CYAN + "1" + ANSI_RESET + " - Select position");
+                num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
 
                 while (num != 1) {
-                    num = Get.getIntegerBelow(Get.ANSI_RED + "¡¡ ERROR NUMBER !!" + ANSI_RESET);
+                    System.out.println(Get.ANSI_RED + "                                                                            ERROR NUMBER !" + ANSI_RESET);
+                    num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
                 }
             }
 
@@ -94,7 +98,7 @@ public class Game {
                     Coordinate.numberError(coordinate.charAt(1)) ||
                     boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
 
-                System.out.println(ANSI_RED + "                                                             ¡¡ COORDINATE ERROR !!" + ANSI_RESET);
+                System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
                 coordinate = Get.getCoordinate();
             }
 
@@ -120,7 +124,13 @@ public class Game {
         } while (!Put.collisionBomb(board, letter, number) || num == 2);
 
         if (Put.collisionBomb(board, letter, number)) {
-            System.out.println("¡¡¡ BOOOOOOM !!!");
+
+            Visualize.showBombs(board, boardPlayer);
+
+            System.out.println("                                                                          " + RED_BACKGROUND + "  BOOOOOOM !  " + ANSI_RESET);
+            System.out.println();
+            Visualize.showBoard(boardPlayer);
+            System.out.println();
         }
     }
 }
