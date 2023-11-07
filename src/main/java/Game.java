@@ -175,7 +175,8 @@ public class Game {
 
                 while (Coordinate.wrongLenght(coordinate) ||
                         Coordinate.letterErrorMedium(coordinate.charAt(0)) ||
-                        Coordinate.numberErrorMedium(coordinate.charAt(1))) {
+                        Coordinate.numberErrorMedium(coordinate.charAt(1)) ||
+                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
 
                     System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
                     coordinate = Input.getCoordinateMedium();
