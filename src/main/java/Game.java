@@ -127,7 +127,7 @@ public class Game {
 
     public static void game(char[][] board, char[][] boardPlayer, int countMines, int level) {
 
-        int letter = ' ', number = ' ', num;
+        int letter, number, num;
 
         System.out.println();
 
@@ -167,14 +167,15 @@ public class Game {
                 System.out.println();
 
                 letter = coordinate.charAt(0) - 65;
-                number = coordinate.charAt(1) - 50;
+                number = coordinate.charAt(1) - 47;
 
             } else if (level == 2) {
                 String coordinate = Input.getCoordinateTwo();
 
                 while (Coordinate.wrongLenght(coordinate) ||
                         Coordinate.letterErrorMedium(coordinate.charAt(0)) ||
-                        Coordinate.letter2ErrorMedium(coordinate.charAt(1))) {
+                        Coordinate.letter2ErrorMedium(coordinate.charAt(1)) ||
+                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 64] != '-') {
 
                     System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
                     coordinate = Input.getCoordinateTwo();
@@ -190,7 +191,8 @@ public class Game {
 
                 while (Coordinate.wrongLenght(coordinate) ||
                         Coordinate.letterErrorHard(coordinate.charAt(0)) ||
-                        Coordinate.letter2ErrorHard(coordinate.charAt(1))) {
+                        Coordinate.letter2ErrorHard(coordinate.charAt(1)) ||
+                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 64] != '-') {
 
                     System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
                     coordinate = Input.getCoordinateTwo();
