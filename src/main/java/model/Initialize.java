@@ -1,6 +1,8 @@
+package model;
+
 public class Initialize {
 
-    public static void initializePlayerBoard(char[][] board) {
+    public static void initializePlayerBoardEasy(char[][] board) {
 
         char number = '0';
         char letter = 'A';

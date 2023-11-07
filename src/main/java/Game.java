@@ -1,3 +1,9 @@
+import controller.Input;
+import model.Coordinate;
+import model.Initialize;
+import model.Put;
+import view.Visualize;
+
 public class Game {
 
     public static final String ANSI_RED = "\u001B[31m";
@@ -6,6 +12,8 @@ public class Game {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String BLUE_BACKGROUND = "\033[44m";
     public static final String RED_BACKGROUND = "\u001B[41m";
+    public static final String GREEN_BACKGROUND = "\u001B[42m";
+    public static final String YELLOW_BACKGROUND = "\u001B[43m";
     public static final String ANSI_BLACK = "\u001B[30m";
 
 
@@ -17,14 +25,13 @@ public class Game {
     public static void menu() {
 
         System.out.println();
-        System.out.println();
         System.out.println("                                                                 " + BLUE_BACKGROUND + ANSI_BLACK + "  WELCOME TO THE MINESWEEEPER !  " + ANSI_RESET);
         System.out.println();
-        int number = Get.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
+        int number = Input.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
 
         while (number > 2 || number < 1) {
-            System.out.println("                                                                  " + Get.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
-            number = Get.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
+            System.out.println("                                                                  " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
+            number = Input.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
         }
 
         if (number == 1) {
@@ -58,16 +65,37 @@ public class Game {
 
     public static void game(char[][] board, char[][] boardPlayer) {
 
-        Initialize.initializePlayerBoard(board);
-        Initialize.initializePlayerBoard(boardPlayer);
+        int level = Input.getInteger("                                             SELECT THE LEVEL TO PLAY (1 - " + GREEN_BACKGROUND + "  EASY  " + ANSI_RESET + " / 2 - " + YELLOW_BACKGROUND + "  MEDIUM  " + ANSI_RESET + " / 3 - " + RED_BACKGROUND + "  HARD  " + ANSI_RESET + " ): ");
 
-        Put.putBombs(board);
-        Put.putNumbers(board);
+        while (level > 3 || level < 1) {
+            System.out.println("                                                                  " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1, 2 OR 3 ! " + ANSI_RESET);
+            level = Input.getIntegerTwo("                                             SELECT THE LEVEL TO PLAY (1 - " + GREEN_BACKGROUND + "  EASY  " + ANSI_RESET + " / 2 - " + YELLOW_BACKGROUND + "  MEDIUM  " + ANSI_RESET + " / 3 - " + RED_BACKGROUND + "  HARD  " + ANSI_RESET + " ): ");
+        }
 
-        Visualize.showBoard(boardPlayer);
+        System.out.println();
         System.out.println();
 
-        int letter, number, num, countMines = 10;
+        int countMines, letter, number, num;
+
+        if (level == 1) {
+            Initialize.initializePlayerBoardEasy(board);
+            Initialize.initializePlayerBoardEasy(boardPlayer);
+
+            Put.putBombs(board);
+            Put.putNumbers(board);
+
+            Visualize.showBoard(boardPlayer);
+
+            countMines = 10;
+
+        } else if (level == 2) {
+            countMines = 40;
+
+        } else {
+            countMines = 99;
+        }
+
+        System.out.println();
 
         do {
 
@@ -75,23 +103,23 @@ public class Game {
             System.out.println();
 
             if (countMines != 0) {
-                num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+                num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
 
                 while (num > 2 || num < 1) {
-                    System.out.println("                                                                  " + Get.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
-                    num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+                    System.out.println("                                                                  " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
+                    num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
                 }
 
             } else {
-                num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+                num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
 
                 while (num != 1) {
-                    System.out.println(Get.ANSI_RED + "                                                                            ERROR NUMBER !" + ANSI_RESET);
-                    num = Get.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+                    System.out.println(Input.ANSI_RED + "                                                                            ERROR NUMBER !" + ANSI_RESET);
+                    num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
                 }
             }
 
-            String coordinate = Get.getCoordinate();
+            String coordinate = Input.getCoordinate();
 
             while (Coordinate.wrongLenght(coordinate) ||
                     Coordinate.letterError(coordinate.charAt(0)) ||
@@ -99,7 +127,7 @@ public class Game {
                     boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
 
                 System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
-                coordinate = Get.getCoordinate();
+                coordinate = Input.getCoordinate();
             }
 
             System.out.println();

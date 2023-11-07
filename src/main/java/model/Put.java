@@ -1,3 +1,5 @@
+package model;
+
 public class Put {
     public static void putBombs(char[][] board) {
 
