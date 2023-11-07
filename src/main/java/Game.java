@@ -184,6 +184,23 @@ public class Game {
 
                 letter = coordinate.charAt(0) - 65;
                 number = coordinate.charAt(1) - 64;
+
+            } else {
+                String coordinate = Input.getCoordinateTwo();
+
+                while (Coordinate.wrongLenght(coordinate) ||
+                        Coordinate.letterErrorHard(coordinate.charAt(0)) ||
+                        Coordinate.letter2ErrorHard(coordinate.charAt(1))) {
+
+                    System.out.println(ANSI_RED + "                                                                          COORDINATE ERROR !" + ANSI_RESET);
+                    coordinate = Input.getCoordinateTwo();
+                }
+
+                System.out.println();
+
+                letter = coordinate.charAt(0) - 65;
+                number = coordinate.charAt(1) - 64;
+
             }
 
             if (num == 1) {
@@ -201,6 +218,8 @@ public class Game {
                 Visualize.showBoardEasy(boardPlayer);
             } else if (level == 2) {
                 Visualize.showBoardMedium(boardPlayer);
+            } else {
+                Visualize.showBoardHard(boardPlayer);
             }
             System.out.println();
 
@@ -217,6 +236,8 @@ public class Game {
                 Visualize.showBoardEasy(boardPlayer);
             } else if (level == 2) {
                 Visualize.showBoardMedium(boardPlayer);
+            } else {
+                Visualize.showBoardHard(boardPlayer);
             }
 
             System.out.println();

@@ -18,6 +18,14 @@ public class Coordinate {
         return letter < 'A' || letter > 'P';
     }
 
+    public static boolean letterErrorHard(char letter) {
+        return letter < 'A' || letter > 'T';
+    }
+
+    public static boolean letter2ErrorHard(char letter) {
+        return letter < 'A' || letter > 'X';
+    }
+
     public static boolean numberErrorEasy(char number) {
         return number < '0' || number > '9';
     }
