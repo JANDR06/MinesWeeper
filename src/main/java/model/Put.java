@@ -1,7 +1,7 @@
 package model;
 
 public class Put {
-    public static void putBombs(char[][] board) {
+    public static void putBombsEasy(char[][] board) {
 
         int bombs = 10;
         int positionX, positionY;
@@ -18,9 +18,7 @@ public class Put {
         }
     }
 
-    public static void putNumbers(char[][] board) {
-
-
+    public static void putNumbersEasy(char[][] board) {
 
         for (int i = 0; i < board.length - 1; i++) {
             for (int j = 1; j < board[0].length; j++) {

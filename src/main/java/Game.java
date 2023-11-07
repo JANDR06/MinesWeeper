@@ -38,13 +38,58 @@ public class Game {
             instructions();
             System.out.println();
 
-            char[][] board = new char[9][11];
-            char[][] boardPlayer = new char[9][11];
+            int level = level();
+            int countMines;
 
-            game(board, boardPlayer);
+            if (level == 1) {
+                char[][] board = new char[9][11];
+                char[][] boardPlayer = new char[9][11];
 
-        } else {
-            System.out.println();
+                Initialize.initializePlayerBoardEasy(board);
+                Initialize.initializePlayerBoardEasy(boardPlayer);
+
+                Put.putBombsEasy(board);
+                Put.putNumbersEasy(board);
+
+                Visualize.showBoard(boardPlayer);
+
+                countMines = 10;
+
+                game(board, boardPlayer, countMines);
+
+            } else if (level == 2) {
+                char[][] board = new char[9][11];
+                char[][] boardPlayer = new char[9][11];
+
+                Initialize.initializePlayerBoardEasy(board);
+                Initialize.initializePlayerBoardEasy(boardPlayer);
+
+                Put.putBombsEasy(board);
+                Put.putNumbersEasy(board);
+
+                Visualize.showBoard(boardPlayer);
+
+                countMines = 40;
+
+                game(board, boardPlayer, countMines);
+
+            } else {
+                char[][] board = new char[9][11];
+                char[][] boardPlayer = new char[9][11];
+
+                Initialize.initializePlayerBoardEasy(board);
+                Initialize.initializePlayerBoardEasy(boardPlayer);
+
+                Put.putBombsEasy(board);
+                Put.putNumbersEasy(board);
+
+                Visualize.showBoard(boardPlayer);
+
+                countMines = 99;
+
+                game(board, boardPlayer, countMines);
+            }
+
             System.out.println("                                                                         " + BLUE_BACKGROUND + ANSI_BLACK + "  SEE YOU SOON !  " + ANSI_RESET);
         }
     }
@@ -63,8 +108,7 @@ public class Game {
         System.out.println("                          " + ANSI_BLUE + "----------------------------------------------------------------------------------------------------------------" + ANSI_RESET);
     }
 
-    public static void game(char[][] board, char[][] boardPlayer) {
-
+    public static int level() {
         int level = Input.getInteger("                                             SELECT THE LEVEL TO PLAY (1 - " + GREEN_BACKGROUND + "  EASY  " + ANSI_RESET + " / 2 - " + YELLOW_BACKGROUND + "  MEDIUM  " + ANSI_RESET + " / 3 - " + RED_BACKGROUND + "  HARD  " + ANSI_RESET + " ): ");
 
         while (level > 3 || level < 1) {
@@ -75,30 +119,16 @@ public class Game {
         System.out.println();
         System.out.println();
 
-        int countMines, letter, number, num;
+        return level;
+    }
 
-        if (level == 1) {
-            Initialize.initializePlayerBoardEasy(board);
-            Initialize.initializePlayerBoardEasy(boardPlayer);
+    public static void game(char[][] board, char[][] boardPlayer, int countMines) {
 
-            Put.putBombs(board);
-            Put.putNumbers(board);
-
-            Visualize.showBoard(boardPlayer);
-
-            countMines = 10;
-
-        } else if (level == 2) {
-            countMines = 40;
-
-        } else {
-            countMines = 99;
-        }
+        int letter, number, num;
 
         System.out.println();
 
         do {
-
             System.out.println("                                                                     " + BLUE_BACKGROUND + ANSI_BLACK + "  * CHOOSE AN OPTION *  " + ANSI_RESET);
             System.out.println();
 
