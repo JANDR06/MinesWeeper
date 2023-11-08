@@ -126,7 +126,7 @@ public class Visualize {
         }
     }
 
-    public static void despejarCasilla(char[][] tablero, int fila, int columna) {
+    public static void despejarCasilla(char[][] tablero, char[][] board, int fila, int columna) {
         int filas = tablero.length;
         int columnas = tablero[0].length;
 
@@ -141,7 +141,7 @@ public class Visualize {
         }
 
         // Marcar la casilla como revelada
-        tablero[fila][columna] = 'V'; // 'V' podría ser cualquier marcador que indica que la casilla está vacía
+        tablero[fila][columna] = board[fila][columna]; // 'V' podría ser cualquier marcador que indica que la casilla está vacía
 
         // Llamar recursivamente a la función para las casillas adyacentes
         int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
@@ -150,7 +150,7 @@ public class Visualize {
         for (int i = 0; i < 8; i++) {
             int nuevaFila = fila + dx[i];
             int nuevaColumna = columna + dy[i];
-            despejarCasilla(tablero, nuevaFila, nuevaColumna);
+            despejarCasilla(tablero, board, nuevaFila, nuevaColumna);
         }
     }
 }

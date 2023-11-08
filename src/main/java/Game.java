@@ -51,6 +51,9 @@ public class Game {
                 Put.putBombsEasy(board);
                 Put.putNumbers(board);
 
+                Visualize.showBoardEasy(board);
+                System.out.println();
+
                 Visualize.showBoardEasy(boardPlayer);
 
                 countMines = 10;
@@ -207,6 +210,7 @@ public class Game {
 
             if (num == 1) {
                 boardPlayer[letter][number] = board[letter][number];
+                despejarCasillas(boardPlayer, board, letter, number);
 
             } else {
                 boardPlayer[letter][number] = '☢';
@@ -244,6 +248,35 @@ public class Game {
 
             System.out.println();
         }
+    }
+
+    public static void despejarCasillas(char[][] boardPlayer, char[][] board, int letter, int number) {
+
+        if (letter < 0 || letter >= boardPlayer.length || number < 0 || number >= boardPlayer[0].length) {
+            return;
+        }
+
+        if (boardPlayer[letter][number] != ' ') {
+            return;
+        }
+
+
+        boardPlayer[letter][number] = board[letter][number];
+
+
+        int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
+        int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+        for (int i = 0; i < 8; i++) {
+
+            int newLetter = letter + dx[i];
+            int newNumber = number + dy[i];
+
+            despejarCasillas(boardPlayer, board, newLetter, newNumber);
+        }
+
+
+
     }
 
 }
