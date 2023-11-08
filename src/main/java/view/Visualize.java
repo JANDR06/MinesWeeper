@@ -16,7 +16,7 @@ public class Visualize {
         for (int i = 0; i  < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
 
-                if (board[i][j] ==  '*') {
+                if (board[i][j] ==  '☢') {
                     System.out.print(ANSI_RED_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
                 } else if (i < 8 && j > 0) {
                     if (board[i][j] == '1') {
@@ -49,7 +49,7 @@ public class Visualize {
         for (int i = 0; i  < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
 
-                if (board[i][j] ==  '*') {
+                if (board[i][j] ==  '☢') {
                     System.out.print(ANSI_RED_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
                 } else if (i < 14 && j > 0) {
                     if (board[i][j] == '1') {
@@ -84,7 +84,7 @@ public class Visualize {
         for (int i = 0; i  < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
 
-                if (board[i][j] ==  '*') {
+                if (board[i][j] ==  '☢') {
                     System.out.print(ANSI_RED_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
                 } else if (i < 20 && j > 0) {
                     if (board[i][j] == '1') {
@@ -119,12 +119,38 @@ public class Visualize {
         for (int i = 0; i < boardPlayer.length; i++) {
             for (int j = 0; j < boardPlayer[0].length; j++) {
 
-                if (board[i][j] == '*') {
-                    boardPlayer[i][j] = '*';
+                if (board[i][j] == '☢') {
+                    boardPlayer[i][j] = '☢';
                 }
             }
         }
     }
 
+    public static void despejarCasilla(char[][] tablero, int fila, int columna) {
+        int filas = tablero.length;
+        int columnas = tablero[0].length;
 
+        // Verificar si las coordenadas están dentro de los límites del tablero
+        if (fila < 0 || fila >= filas || columna < 0 || columna >= columnas) {
+            return;
+        }
+
+        // Verificar si la casilla ya ha sido revelada
+        if (tablero[fila][columna] != ' ') {
+            return;
+        }
+
+        // Marcar la casilla como revelada
+        tablero[fila][columna] = 'V'; // 'V' podría ser cualquier marcador que indica que la casilla está vacía
+
+        // Llamar recursivamente a la función para las casillas adyacentes
+        int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
+        int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+        for (int i = 0; i < 8; i++) {
+            int nuevaFila = fila + dx[i];
+            int nuevaColumna = columna + dy[i];
+            despejarCasilla(tablero, nuevaFila, nuevaColumna);
+        }
+    }
 }

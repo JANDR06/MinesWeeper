@@ -12,7 +12,7 @@ public class Put {
             positionY = (int) (Math.random() * 9) + 1;
 
             if (!collisionBomb(board, positionX, positionY)) {
-                board[positionX][positionY] = '*';
+                board[positionX][positionY] = '☢';
                 bombs--;
             }
         }
@@ -29,7 +29,7 @@ public class Put {
             positionY = (int) (Math.random() * 15) + 1;
 
             if (!collisionBomb(board, positionX, positionY)) {
-                board[positionX][positionY] = '*';
+                board[positionX][positionY] = '☢';
                 bombs--;
             }
         }
@@ -46,7 +46,7 @@ public class Put {
             positionY = (int) (Math.random() * 23) + 1;
 
             if (!collisionBomb(board, positionX, positionY)) {
-                board[positionX][positionY] = '*';
+                board[positionX][positionY] = '☢';
                 bombs--;
             }
         }
@@ -57,7 +57,7 @@ public class Put {
         for (int i = 0; i < board.length - 1; i++) {
             for (int j = 1; j < board[0].length; j++) {
 
-                if (board[i][j] != '*') {
+                if (board[i][j] != '☢') {
 
                     if (countBombs(board, i, j) == 6) {
                         board[i][j] = '5';
@@ -80,7 +80,7 @@ public class Put {
     }
 
     public static boolean collisionBomb(char[][] board, int x, int y) {
-        return board[x][y] == '*';
+        return board[x][y] == '☢';
     }
 
     public static boolean inBoard(char[][] board, int x, int y) {
@@ -90,49 +90,39 @@ public class Put {
     public static int countBombs (char[][] board, int x, int y) {
         int count = 0;
 
-        if (inBoard(board, x, y - 1) && board[x][y - 1] == '*') {
+        if (inBoard(board, x, y - 1) && board[x][y - 1] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x, y + 1) && board[x][y + 1] == '*') {
+        if (inBoard(board, x, y + 1) && board[x][y + 1] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x - 1, y  - 1) && board[x - 1][y - 1] == '*') {
+        if (inBoard(board, x - 1, y  - 1) && board[x - 1][y - 1] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x - 1, y) && board[x - 1][y] == '*') {
+        if (inBoard(board, x - 1, y) && board[x - 1][y] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x - 1, y + 1) && board[x - 1][y + 1] == '*') {
+        if (inBoard(board, x - 1, y + 1) && board[x - 1][y + 1] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x + 1, y - 1) && board[x + 1][y - 1] == '*') {
+        if (inBoard(board, x + 1, y - 1) && board[x + 1][y - 1] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x + 1, y) && board[x + 1][y] == '*') {
+        if (inBoard(board, x + 1, y) && board[x + 1][y] == '☢') {
             count++;
         }
 
-        if (inBoard(board, x + 1, y + 1) && board[x + 1][y + 1] == '*') {
+        if (inBoard(board, x + 1, y + 1) && board[x + 1][y + 1] == '☢') {
             count++;
         }
 
         return count;
-    }
-
-    public static char spaces (char[][] board, int x, int y) {
-
-        if (board[x][y] != ' ') {
-            return board[x][y];
-        }
-
-
-        return spaces(board, x + 1, y);
     }
 }
 

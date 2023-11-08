@@ -209,7 +209,7 @@ public class Game {
                 boardPlayer[letter][number] = board[letter][number];
 
             } else {
-                boardPlayer[letter][number] = 'M';
+                boardPlayer[letter][number] = '☢';
                 countMines--;
             }
 
@@ -245,4 +245,5 @@ public class Game {
             System.out.println();
         }
     }
+
 }
