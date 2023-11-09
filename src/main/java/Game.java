@@ -258,11 +258,11 @@ public class Game {
             return;
         }
 
-        if (boardPlayer[letter][number] == '☢') {
+        if (board[letter][number] == '☢') {
             return;
+        }
 
-        } else if (boardPlayer[letter][number] != ' ' && boardPlayer[letter][number] != '-') {
-            boardPlayer[letter][number] = board[letter][number];
+        if (boardPlayer[letter][number] != ' ' && boardPlayer[letter][number] != '-') {
             return;
         }
 
