@@ -209,8 +209,7 @@ public class Game {
             }
 
             if (num == 1) {
-                boardPlayer[letter][number] = board[letter][number];
-                despejarCasillas(boardPlayer, board, letter, number);
+                clearBox(boardPlayer, board, letter, number);
 
             } else {
                 boardPlayer[letter][number] = '☢';
@@ -250,33 +249,35 @@ public class Game {
         }
     }
 
-    public static void despejarCasillas(char[][] boardPlayer, char[][] board, int letter, int number) {
+
+
+
+    public static void clearBox(char[][] boardPlayer, char[][] board, int letter, int number) {
 
         if (letter < 0 || letter >= boardPlayer.length || number < 0 || number >= boardPlayer[0].length) {
             return;
         }
 
-        if (boardPlayer[letter][number] != ' ') {
+        if (boardPlayer[letter][number] == '☢') {
+            return;
+
+        } else if (boardPlayer[letter][number] != ' ' && boardPlayer[letter][number] != '-') {
+            boardPlayer[letter][number] = board[letter][number];
             return;
         }
 
-
         boardPlayer[letter][number] = board[letter][number];
 
-
-        int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
-        int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
+        int[] x = {-1, -1, -1, 0, 0, 1, 1, 1};
+        int[] y = {-1, 0, 1, -1, 1, -1, 0, 1};
 
         for (int i = 0; i < 8; i++) {
+            int updateLetter = letter + x[i];
+            int updateNumber = number + y[i];
 
-            int newLetter = letter + dx[i];
-            int newNumber = number + dy[i];
-
-            despejarCasillas(boardPlayer, board, newLetter, newNumber);
+            clearBox(boardPlayer, board, updateLetter, updateNumber);
         }
-
-
-
     }
+
 
 }
