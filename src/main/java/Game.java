@@ -262,7 +262,8 @@ public class Game {
             return;
         }
 
-        if (boardPlayer[letter][number] != ' ' && boardPlayer[letter][number] != '-') {
+        if (boardPlayer[letter][number] != '-' || board[letter][number] !=  ' ') {
+            boardPlayer[letter][number] = board[letter][number];
             return;
         }
 
@@ -271,7 +272,7 @@ public class Game {
         int[] x = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] y = {-1, 0, 1, -1, 1, -1, 0, 1};
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < x.length; i++) {
             int updateLetter = letter + x[i];
             int updateNumber = number + y[i];
 
