@@ -16,6 +16,8 @@ public class Game {
     public static final String YELLOW_BACKGROUND = "\u001B[43m";
     public static final String ANSI_BLACK = "\u001B[30m";
 
+    public static final String BANDERA= "\uD83C\uDFF3";
+
 
 
     public static void main(String[] args) {
