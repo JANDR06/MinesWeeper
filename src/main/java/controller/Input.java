@@ -36,7 +36,7 @@ public class Input {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("                                                    " + ANSI_BLUE + "Enter a coordinate" + ANSI_RESET + " (Example 'D5' / 'd5')" + ANSI_BLUE + ": " + ANSI_RESET);
+        System.out.print("                                                           " + ANSI_BLUE + "Enter a coordinate" + ANSI_RESET + " (Example 'D5' / 'd5')" + ANSI_BLUE + ": " + ANSI_RESET);
         String coordinate = sc.next();
         coordinate = coordinate.toUpperCase();
 
@@ -47,7 +47,7 @@ public class Input {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("                                                    " + ANSI_BLUE + "Enter a coordinate" + ANSI_RESET + " (Example 'DA' / 'da')" + ANSI_BLUE + ": " + ANSI_RESET);
+        System.out.print("                                                           " + ANSI_BLUE + "Enter a coordinate" + ANSI_RESET + " (Example 'DA' / 'da')" + ANSI_BLUE + ": " + ANSI_RESET);
         String coordinate = sc.next();
         coordinate = coordinate.toUpperCase();
 

@@ -16,10 +16,6 @@ public class Game {
     public static final String YELLOW_BACKGROUND = "\u001B[43m";
     public static final String ANSI_BLACK = "\u001B[30m";
 
-    public static final String BANDERA= "\uD83C\uDFF3";
-
-
-
     public static void main(String[] args) {
         menu();
     }
@@ -53,9 +49,10 @@ public class Game {
                 Put.putBombsEasy(board);
                 Put.putNumbers(board);
 
+
                 Visualize.showBoardEasy(board);
                 System.out.println();
-
+                System.out.println();
                 Visualize.showBoardEasy(boardPlayer);
 
                 countMines = 10;
@@ -141,19 +138,19 @@ public class Game {
             System.out.println();
 
             if (countMines != 0) {
-                num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+                num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
 
                 while (num > 2 || num < 1) {
                     System.out.println("                                                                  " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! " + ANSI_RESET);
-                    num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+                    num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
                 }
 
             } else {
-                num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+                num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
 
                 while (num != 1) {
                     System.out.println(Input.ANSI_RED + "                                                                            ERROR NUMBER !" + ANSI_RESET);
-                    num = Input.getIntegerTwo("                                                    " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (Mine counter: " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+                    num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
                 }
             }
 
@@ -212,16 +209,21 @@ public class Game {
 
             if (num == 1) {
                 clearBox(boardPlayer, board, letter, number);
+                boardPlayer[letter][number] = board[letter][number];
 
             } else {
-                boardPlayer[letter][number] = '☢';
+                boardPlayer[letter][number] = 'M';
                 countMines--;
             }
 
             System.out.println();
             System.out.println();
 
+
             if (level == 1) {
+                Visualize.showBoardEasy(board);
+                System.out.println();
+                System.out.println();
                 Visualize.showBoardEasy(boardPlayer);
             } else if (level == 2) {
                 Visualize.showBoardMedium(boardPlayer);
@@ -230,7 +232,7 @@ public class Game {
             }
             System.out.println();
 
-        } while (!Put.collisionBomb(board, letter, number) || num == 2);
+        } while (!Put.collisionBomb(board, letter, number) || num == 2 && !win(boardPlayer, board));
 
         if (Put.collisionBomb(board, letter, number)) {
 
@@ -248,10 +250,30 @@ public class Game {
             }
 
             System.out.println();
+
+        } else {
+            System.out.println("CONGRATULATIONS, YOU WON!");
         }
     }
 
 
+    public static boolean win(char[][] boardPlayer, char[][] board) {
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+
+                if (board[i][j] != '☢' && boardPlayer[i][j] != ' ') {
+                    // Casilla sin mina no está descubierta
+                    return false;
+                } else if (board[i][j] == '☢' && boardPlayer[i][j] != 'M') {
+                    // Casilla con mina no está marcada con bandera
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 
 
     public static void clearBox(char[][] boardPlayer, char[][] board, int letter, int number) {
