@@ -60,7 +60,7 @@ public class Put {
                 if (board[i][j] != '☢') {
 
                     if (countBombs(board, i, j) == 6) {
-                        board[i][j] = '5';
+                        board[i][j] = '6';
                     } else if (countBombs(board, i, j) == 5) {
                         board[i][j] = '5';
                     } else if (countBombs(board, i, j) == 4) {

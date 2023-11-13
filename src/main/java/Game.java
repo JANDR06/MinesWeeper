@@ -212,7 +212,7 @@ public class Game {
                 boardPlayer[letter][number] = board[letter][number];
 
             } else {
-                boardPlayer[letter][number] = 'M';
+                boardPlayer[letter][number] = '☢';
                 countMines--;
             }
 
@@ -232,7 +232,7 @@ public class Game {
             }
             System.out.println();
 
-        } while (!Put.collisionBomb(board, letter, number) || num == 2 && !win(boardPlayer, board));
+        } while (!win(boardPlayer, board) && !Put.collisionBomb(board, letter, number) || num == 2);
 
         if (Put.collisionBomb(board, letter, number)) {
 
@@ -262,11 +262,7 @@ public class Game {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
 
-                if (board[i][j] != '☢' && boardPlayer[i][j] != ' ') {
-                    // Casilla sin mina no está descubierta
-                    return false;
-                } else if (board[i][j] == '☢' && boardPlayer[i][j] != 'M') {
-                    // Casilla con mina no está marcada con bandera
+                if (boardPlayer[i][j] != board[i][j]) {
                     return false;
                 }
             }
@@ -274,7 +270,6 @@ public class Game {
 
         return true;
     }
-
 
     public static void clearBox(char[][] boardPlayer, char[][] board, int letter, int number) {
 
@@ -303,6 +298,4 @@ public class Game {
             clearBox(boardPlayer, board, updateLetter, updateNumber);
         }
     }
-
-
 }
