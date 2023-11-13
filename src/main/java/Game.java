@@ -232,9 +232,9 @@ public class Game {
             }
             System.out.println();
 
-        } while (!win(boardPlayer, board) && !Put.collisionBomb(board, letter, number) || num == 2);
+        } while (!win(boardPlayer, board) && (!Put.collisionBomb(board, letter, number) || num == 2));
 
-        if (Put.collisionBomb(board, letter, number)) {
+        if (Put.collisionBomb(board, letter, number) && num == 1) {
 
             Visualize.showBombs(board, boardPlayer);
 
@@ -252,7 +252,7 @@ public class Game {
             System.out.println();
 
         } else {
-            System.out.println("CONGRATULATIONS, YOU WON!");
+            System.out.println("                                                                   " + GREEN_BACKGROUND + "  CONGRATULATIONS, YOU WON !  " + ANSI_RESET);
         }
     }
 
@@ -267,7 +267,6 @@ public class Game {
                 }
             }
         }
-
         return true;
     }
 
