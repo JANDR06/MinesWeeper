@@ -49,10 +49,6 @@ public class Game {
                 Put.putBombsEasy(board);
                 Put.putNumbers(board);
 
-
-                Visualize.showBoardEasy(board);
-                System.out.println();
-                System.out.println();
                 Visualize.showBoardEasy(boardPlayer);
 
                 countMines = 10;
@@ -218,7 +214,6 @@ public class Game {
 
             System.out.println();
             System.out.println();
-
 
             if (level == 1) {
                 System.out.println();
