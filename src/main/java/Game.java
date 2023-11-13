@@ -221,8 +221,6 @@ public class Game {
 
 
             if (level == 1) {
-                Visualize.showBoardEasy(board);
-                System.out.println();
                 System.out.println();
                 Visualize.showBoardEasy(boardPlayer);
             } else if (level == 2) {
