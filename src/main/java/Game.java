@@ -9,6 +9,8 @@ public class Game {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String BLUE_BACKGROUND = "\033[44m";
     public static final String RED_BACKGROUND = "\u001B[41m";
@@ -27,7 +29,7 @@ public class Game {
         System.out.println();
         System.out.println("                                                                " + BLUE_BACKGROUND + ANSI_BLACK + "  WELCOME TO THE MINESWEEEPER ! \uD83D\uDCA3  " + ANSI_RESET);
         System.out.println();
-        int number = Input.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " - PLAY  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - EXIT): ");
+        int number = Input.getInteger("                                                        SELECT WHAT YOU WANT TO DO (" + ANSI_CYAN + "1" + ANSI_RESET + " -" + ANSI_GREEN + " PLAY" + ANSI_RESET + "  / " + ANSI_CYAN + " 2" + ANSI_RESET + " -" + ANSI_RED + " EXIT" + ANSI_RESET + "): ");
 
         while (number > 2 || number < 1) {
             System.out.println("                                                                 " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! \uD83D\uDE21 " + ANSI_RESET);
@@ -127,138 +129,152 @@ public class Game {
 
     public static void game(char[][] board, char[][] boardPlayer, int countMines, int level) {
 
-        int letter, number, num;
+        int letter, number, num, playAgain;
 
         System.out.println();
 
         do {
-            System.out.println("                                                                     " + BLUE_BACKGROUND + ANSI_BLACK + "  ⏬ CHOOSE AN OPTION ⏬  " + ANSI_RESET);
-            System.out.println();
 
-            if (countMines != 0) {
-                num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+            do {
+                System.out.println("                                                                     " + BLUE_BACKGROUND + ANSI_BLACK + "  ⏬ CHOOSE AN OPTION ⏬  " + ANSI_RESET);
+                System.out.println();
 
-                while (num > 2 || num < 1) {
-                    System.out.println("                                                                 " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! \uD83D\uDE21 " + ANSI_RESET);
+                if (countMines != 0) {
                     num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
-                }
 
-            } else {
-                num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+                    while (num > 2 || num < 1) {
+                        System.out.println("                                                                 " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! \uD83D\uDE21 " + ANSI_RESET);
+                        num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + countMines + ANSI_RESET + ") ");
+                    }
 
-                while (num != 1) {
-                    System.out.println(Input.ANSI_RED + "                                                                           ERROR NUMBER ! \uD83D\uDE21 " + ANSI_RESET);
+                } else {
                     num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+
+                    while (num != 1) {
+                        System.out.println(Input.ANSI_RED + "                                                                           ERROR NUMBER ! \uD83D\uDE21 " + ANSI_RESET);
+                        num = Input.getIntegerTwo("                                                           " + ANSI_CYAN + "1" + ANSI_RESET + " - Select position  / " + ANSI_CYAN + " 2" + ANSI_RESET + " - Mark a mine (M " + ANSI_BLUE + "0" + ANSI_RESET + ") ");
+                    }
                 }
-            }
 
-            if (level == 1) {
-                String coordinate = Input.getCoordinate();
+                if (level == 1) {
+                    String coordinate = Input.getCoordinate();
 
-                while (Coordinate.wrongLenght(coordinate) ||
-                        Coordinate.letterErrorEasy(coordinate.charAt(0)) ||
-                        Coordinate.numberErrorEasy(coordinate.charAt(1)) ||
-                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
+                    while (Coordinate.wrongLenght(coordinate) ||
+                            Coordinate.letterErrorEasy(coordinate.charAt(0)) ||
+                            Coordinate.numberErrorEasy(coordinate.charAt(1)) ||
+                            boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 47] != '-') {
 
-                    System.out.println(ANSI_RED + "                                                                         COORDINATE ERROR ! \uD83D\uDE21" + ANSI_RESET);
-                    coordinate = Input.getCoordinate();
+                        System.out.println(ANSI_RED + "                                                                         COORDINATE ERROR ! \uD83D\uDE21" + ANSI_RESET);
+                        coordinate = Input.getCoordinate();
+                    }
+
+                    System.out.println();
+
+                    letter = coordinate.charAt(0) - 65;
+                    number = coordinate.charAt(1) - 47;
+
+                } else if (level == 2) {
+                    String coordinate = Input.getCoordinateTwo();
+
+                    while (Coordinate.wrongLenght(coordinate) ||
+                            Coordinate.letterErrorMedium(coordinate.charAt(0)) ||
+                            Coordinate.letter2ErrorMedium(coordinate.charAt(1)) ||
+                            boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 64] != '-') {
+
+                        System.out.println(ANSI_RED + "                                                                         COORDINATE ERROR ! \uD83D\uDE21" + ANSI_RESET);
+                        coordinate = Input.getCoordinateTwo();
+                    }
+
+                    System.out.println();
+
+                    letter = coordinate.charAt(0) - 65;
+                    number = coordinate.charAt(1) - 64;
+
+                } else {
+                    String coordinate = Input.getCoordinateTwo();
+
+                    while (Coordinate.wrongLenght(coordinate) ||
+                            Coordinate.letterErrorHard(coordinate.charAt(0)) ||
+                            Coordinate.letter2ErrorHard(coordinate.charAt(1)) ||
+                            boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 64] != '-') {
+
+                        System.out.println(ANSI_RED + "                                                                         COORDINATE ERROR ! \uD83D\uDE21" + ANSI_RESET);
+                        coordinate = Input.getCoordinateTwo();
+                    }
+
+                    System.out.println();
+
+                    letter = coordinate.charAt(0) - 65;
+                    number = coordinate.charAt(1) - 64;
+
+                }
+
+                if (num == 1) {
+                    clearBox(boardPlayer, board, letter, number);
+                    boardPlayer[letter][number] = board[letter][number];
+
+                } else {
+                    boardPlayer[letter][number] = 'M';
+                    countMines--;
+                }
+
+                System.out.println();
+                System.out.println();
+
+                if (level == 1) {
+                    System.out.println();
+                    Visualize.showBoardEasy(boardPlayer);
+                } else if (level == 2) {
+                    Visualize.showBoardMedium(boardPlayer);
+                } else {
+                    Visualize.showBoardHard(boardPlayer);
+                }
+                System.out.println();
+
+            } while (!win(boardPlayer) && (!Put.collisionBomb(board, letter, number) || num == 2));
+
+            if (Put.collisionBomb(board, letter, number) && num == 1) {
+
+                Visualize.showBombs(board, boardPlayer);
+
+                System.out.println("                                                                          " + RED_BACKGROUND + "  BOOOOOOM !  " + ANSI_RESET);
+                System.out.println();
+
+                if (level == 1) {
+                    Visualize.showBoardEasy(boardPlayer);
+                } else if (level == 2) {
+                    Visualize.showBoardMedium(boardPlayer);
+                } else {
+                    Visualize.showBoardHard(boardPlayer);
                 }
 
                 System.out.println();
 
-                letter = coordinate.charAt(0) - 65;
-                number = coordinate.charAt(1) - 47;
+            } else {
+                System.out.println("                                                                 " + GREEN_BACKGROUND + "  CONGRATULATIONS, YOU WON ! \uD83C\uDFC6  " + ANSI_RESET);
+                System.out.println();
 
-            } else if (level == 2) {
-                String coordinate = Input.getCoordinateTwo();
+                if (level == 1) {
+                    Visualize.removeBombsEasy(board);
 
-                while (Coordinate.wrongLenght(coordinate) ||
-                        Coordinate.letterErrorMedium(coordinate.charAt(0)) ||
-                        Coordinate.letter2ErrorMedium(coordinate.charAt(1)) ||
-                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 64] != '-') {
-
-                    System.out.println(ANSI_RED + "                                                                         COORDINATE ERROR ! \uD83D\uDE21" + ANSI_RESET);
-                    coordinate = Input.getCoordinateTwo();
+                } else if (level == 2) {
+                    Visualize.removeBombsMedium(board);
+                } else {
+                    Visualize.removeBombsHard(board);
                 }
-
-                System.out.println();
-
-                letter = coordinate.charAt(0) - 65;
-                number = coordinate.charAt(1) - 64;
-
-            } else {
-                String coordinate = Input.getCoordinateTwo();
-
-                while (Coordinate.wrongLenght(coordinate) ||
-                        Coordinate.letterErrorHard(coordinate.charAt(0)) ||
-                        Coordinate.letter2ErrorHard(coordinate.charAt(1)) ||
-                        boardPlayer[coordinate.charAt(0) - 65][coordinate.charAt(1) - 64] != '-') {
-
-                    System.out.println(ANSI_RED + "                                                                         COORDINATE ERROR ! \uD83D\uDE21" + ANSI_RESET);
-                    coordinate = Input.getCoordinateTwo();
-                }
-
-                System.out.println();
-
-                letter = coordinate.charAt(0) - 65;
-                number = coordinate.charAt(1) - 64;
-
-            }
-
-            if (num == 1) {
-                clearBox(boardPlayer, board, letter, number);
-                boardPlayer[letter][number] = board[letter][number];
-
-            } else {
-                boardPlayer[letter][number] = 'M';
-                countMines--;
             }
 
             System.out.println();
             System.out.println();
 
-            if (level == 1) {
-                System.out.println();
-                Visualize.showBoardEasy(boardPlayer);
-            } else if (level == 2) {
-                Visualize.showBoardMedium(boardPlayer);
-            } else {
-                Visualize.showBoardHard(boardPlayer);
-            }
-            System.out.println();
+            playAgain = Input.getInteger("                                                       " + CYAN_BACKGROUND + ANSI_BLACK + "  DO YOU WANT TO PLAY AGAIN ? \uD83D\uDD01 (1 - PLAY / 2 - EXIT)  " + ANSI_RESET + " ");
 
-        } while (!win(boardPlayer) && (!Put.collisionBomb(board, letter, number) || num == 2));
-
-        if (Put.collisionBomb(board, letter, number) && num == 1) {
-
-            Visualize.showBombs(board, boardPlayer);
-
-            System.out.println("                                                                          " + RED_BACKGROUND + "  BOOOOOOM !  " + ANSI_RESET);
-            System.out.println();
-
-            if (level == 1) {
-                Visualize.showBoardEasy(boardPlayer);
-            } else if (level == 2) {
-                Visualize.showBoardMedium(boardPlayer);
-            } else {
-                Visualize.showBoardHard(boardPlayer);
+            while (playAgain > 2 || playAgain < 1) {
+                System.out.println("                                                                 " + Input.ANSI_RED + "   ERROR NUMBER, WRITE 1 OR 2 ! \uD83D\uDE21 " + ANSI_RESET);
+                playAgain = Input.getInteger("                                                       " + CYAN_BACKGROUND + ANSI_BLACK + "  DO YOU WANT TO PLAY AGAIN ? \uD83D\uDD01 (1 - PLAY / 2 - EXIT)  " + ANSI_RESET + " ");
             }
 
-            System.out.println();
-
-        } else {
-            System.out.println("                                                                 " + GREEN_BACKGROUND + "  CONGRATULATIONS, YOU WON ! \uD83C\uDFC6  " + ANSI_RESET);
-            System.out.println();
-
-            if (level == 1) {
-                Visualize.removeBombsEasy(board);
-
-            } else if (level == 2) {
-                Visualize.removeBombsMedium(board);
-            } else {
-                Visualize.removeBombsHard(board);
-            }
-        }
+        } while (playAgain != 2);
     }
 
 
