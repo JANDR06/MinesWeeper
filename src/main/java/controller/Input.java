@@ -12,7 +12,7 @@ public class Input {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
         while(!sc.hasNextInt()){
-            System.out.print("                                                                 " + ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! " + ANSI_RESET);
+            System.out.print("                                                                " + ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! \uD83D\uDE21 " + ANSI_RESET);
             System.out.println();
             System.out.print(message);
             sc.next();
@@ -24,7 +24,7 @@ public class Input {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
         while(!sc.hasNextInt()){
-            System.out.print("                                                                 " + ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! " + ANSI_RESET);
+            System.out.print("                                                                " + ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! \uD83D\uDE21 " + ANSI_RESET);
             System.out.println();
             System.out.print(message);
             sc.next();

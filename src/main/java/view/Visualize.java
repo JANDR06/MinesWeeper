@@ -61,6 +61,8 @@ public class Visualize {
                         System.out.print(ANSI_GREY_BACKGROUND + ANSI_BLUE + " " + board[i][j] + " " + ANSI_RESET);
                     } else if (board[i][j] == '4') {
                         System.out.print(ANSI_GREY_BACKGROUND + ANSI_PURPLE + " " + board[i][j] + " " + ANSI_RESET);
+                    } else if (board[i][j] == '5') {
+                        System.out.print(ANSI_GREY_BACKGROUND + ANSI_RED + " " + board[i][j] + " " + ANSI_RESET);
                     } else {
                         System.out.print(ANSI_GREY_BACKGROUND  + " " + board[i][j] + " " + ANSI_RESET);
                     }
