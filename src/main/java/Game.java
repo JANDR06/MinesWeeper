@@ -208,7 +208,7 @@ public class Game {
                 boardPlayer[letter][number] = board[letter][number];
 
             } else {
-                boardPlayer[letter][number] = '☢';
+                boardPlayer[letter][number] = 'M';
                 countMines--;
             }
 
@@ -225,7 +225,7 @@ public class Game {
             }
             System.out.println();
 
-        } while (!win(boardPlayer, board) && (!Put.collisionBomb(board, letter, number) || num == 2));
+        } while (!win(boardPlayer) && (!Put.collisionBomb(board, letter, number) || num == 2));
 
         if (Put.collisionBomb(board, letter, number) && num == 1) {
 
@@ -246,16 +246,26 @@ public class Game {
 
         } else {
             System.out.println("                                                                   " + GREEN_BACKGROUND + "  CONGRATULATIONS, YOU WON !  " + ANSI_RESET);
+            System.out.println();
+
+            if (level == 1) {
+                Visualize.removeBombsEasy(board);
+
+            } else if (level == 2) {
+                Visualize.removeBombsMedium(board);
+            } else {
+                Visualize.removeBombsHard(board);
+            }
         }
     }
 
 
-    public static boolean win(char[][] boardPlayer, char[][] board) {
+    public static boolean win(char[][] boardPlayer) {
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
+        for (char[] chars : boardPlayer) {
+            for (int j = 0; j < boardPlayer[0].length; j++) {
 
-                if (boardPlayer[i][j] != board[i][j]) {
+                if (chars[j] == '-') {
                     return false;
                 }
             }
