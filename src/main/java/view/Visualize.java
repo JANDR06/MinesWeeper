@@ -156,7 +156,7 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(GREEN_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
+                    System.out.print(ANSI_RED_BACKGROUND + " " + board[i][j] + " " + ANSI_RESET);
                 } else if (i < 20 && j > 0) {
                     if (board[i][j] == '1') {
                         System.out.print(ANSI_GREY_BACKGROUND + ANSI_YELLOW + " " + board[i][j] + " " + ANSI_RESET);
