@@ -1,6 +1,6 @@
 package view;
 
-import model.ConsoleColors;
+import model.Console;
 
 public class Visualize {
     public static void showBoardEasy(char[][] board) {
@@ -9,18 +9,18 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(ConsoleColors.RED_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                    System.out.print(Console.RED_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                 } else if (i < 8 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_YELLOW + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_YELLOW + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_GREEN + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_GREEN + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_BLUE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_BLUE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_PURPLE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_PURPLE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                     }
 
                 } else {
@@ -42,20 +42,20 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(ConsoleColors.GREEN_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                    System.out.print(Console.GREEN_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                 } else if (i < 8 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_YELLOW + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_YELLOW + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_GREEN + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_GREEN + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_BLUE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_BLUE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_PURPLE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_PURPLE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '5') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_RED + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_RED + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                     }
 
                 } else {
@@ -77,20 +77,20 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(ConsoleColors.RED_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                    System.out.print(Console.RED_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                 } else if (i < 14 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_YELLOW + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_YELLOW + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_GREEN + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_GREEN + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_BLUE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_BLUE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_PURPLE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_PURPLE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '5') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_RED + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_RED + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                     }
 
                 } else {
@@ -112,20 +112,20 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(ConsoleColors.RED_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                    System.out.print(Console.RED_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                 } else if (i < 14 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_YELLOW + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_YELLOW + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_GREEN + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_GREEN + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_BLUE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_BLUE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_PURPLE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_PURPLE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '5') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_RED + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_RED + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                     }
 
                 } else {
@@ -147,20 +147,20 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(ConsoleColors.RED_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                    System.out.print(Console.RED_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                 } else if (i < 20 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_YELLOW + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_YELLOW + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_GREEN + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_GREEN + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_BLUE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_BLUE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_PURPLE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_PURPLE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '5') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_RED + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_RED + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                     }
 
                 } else {
@@ -182,20 +182,20 @@ public class Visualize {
             for (int j = 0; j < board[0].length; j++) {
 
                 if (board[i][j] ==  '☢') {
-                    System.out.print(ConsoleColors.GREEN_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                    System.out.print(Console.GREEN_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                 } else if (i < 20 && j > 0) {
                     if (board[i][j] == '1') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_YELLOW + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_YELLOW + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '2') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_GREEN + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_GREEN + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '3') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_BLUE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_BLUE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '4') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_PURPLE + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_PURPLE + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else if (board[i][j] == '5') {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + ConsoleColors.ANSI_RED + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + Console.ANSI_RED + " " + board[i][j] + " " + Console.ANSI_RESET);
                     } else {
-                        System.out.print(ConsoleColors.GREY_BACKGROUND + " " + board[i][j] + " " + ConsoleColors.ANSI_RESET);
+                        System.out.print(Console.GREY_BACKGROUND + " " + board[i][j] + " " + Console.ANSI_RESET);
                     }
 
                 } else {

@@ -1,6 +1,6 @@
 package controller;
 
-import model.ConsoleColors;
+import model.Console;
 import java.util.Scanner;
 
 public class Input {
@@ -9,7 +9,7 @@ public class Input {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
         while(!sc.hasNextInt()){
-            System.out.print("                                                                " + ConsoleColors.ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! \uD83D\uDE21 " + ConsoleColors.ANSI_RESET);
+            System.out.print("                                                                " + Console.ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! \uD83D\uDE21 " + Console.ANSI_RESET);
             System.out.println();
             System.out.print(message);
             sc.next();
@@ -21,7 +21,7 @@ public class Input {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
         while(!sc.hasNextInt()){
-            System.out.print("                                                                " + ConsoleColors.ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! \uD83D\uDE21 " + ConsoleColors.ANSI_RESET);
+            System.out.print("                                                                " + Console.ANSI_RED + "   ERROR, WRITE A INTEGER NUMBER ! \uD83D\uDE21 " + Console.ANSI_RESET);
             System.out.println();
             System.out.print(message);
             sc.next();
@@ -33,7 +33,7 @@ public class Input {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("                                                           " + ConsoleColors.ANSI_BLUE + "Enter a coordinate" + ConsoleColors.ANSI_RESET + " (Example 'D5' / 'd5')" + ConsoleColors.ANSI_BLUE + ": " + ConsoleColors.ANSI_RESET);
+        System.out.print("                                                           " + Console.ANSI_BLUE + "Enter a coordinate" + Console.ANSI_RESET + " (Example 'D5' / 'd5')" + Console.ANSI_BLUE + ": " + Console.ANSI_RESET);
         String coordinate = sc.next();
         coordinate = coordinate.toUpperCase();
 
@@ -44,7 +44,7 @@ public class Input {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("                                                           " + ConsoleColors.ANSI_BLUE + "Enter a coordinate" + ConsoleColors.ANSI_RESET + " (Example 'DA' / 'da')" + ConsoleColors.ANSI_BLUE + ": " + ConsoleColors.ANSI_RESET);
+        System.out.print("                                                           " + Console.ANSI_BLUE + "Enter a coordinate" + Console.ANSI_RESET + " (Example 'DA' / 'da')" + Console.ANSI_BLUE + ": " + Console.ANSI_RESET);
         String coordinate = sc.next();
         coordinate = coordinate.toUpperCase();
 

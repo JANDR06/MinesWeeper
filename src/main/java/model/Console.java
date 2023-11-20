@@ -1,6 +1,6 @@
 package model;
 
-public class ConsoleColors {
+public class Console {
 
     public static final String RED_BACKGROUND = "\u001B[41m";
     public static final String GREEN_BACKGROUND = "\u001B[42m";
@@ -18,5 +18,21 @@ public class ConsoleColors {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_BLACK = "\u001B[30m";
+
+
+    public static void simulateLoading() {
+        System.out.print(Console.ANSI_PURPLE + "                                                                           Discovering");
+
+        for (int i = 0; i < 3; i++) {
+            try {
+                Thread.sleep(400);
+                System.out.print(".");
+                System.out.flush();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.print(Console.ANSI_RESET);
+    }
 
 }
