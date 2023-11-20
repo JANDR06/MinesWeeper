@@ -241,13 +241,13 @@ public class Game {
 
             System.out.println();
             System.out.println();
+            System.out.println();
 
-            if (level == 1) {
-                System.out.println();
+            if (level == 1 && !win(boardPlayer) && (!Put.collisionBomb(board, letter, number) || num == 2)) {
                 Visualize.showBoardEasy(boardPlayer);
-            } else if (level == 2) {
+            } else if (level == 2 && !win(boardPlayer) && (!Put.collisionBomb(board, letter, number) || num == 2)) {
                 Visualize.showBoardMedium(boardPlayer);
-            } else {
+            } else if (level == 3 && !win(boardPlayer) && (!Put.collisionBomb(board, letter, number) || num == 2)) {
                 Visualize.showBoardHard(boardPlayer);
             }
             System.out.println();
@@ -259,6 +259,7 @@ public class Game {
             Visualize.showBombs(board, boardPlayer);
 
             System.out.println("                                                                          " + Console.RED_BACKGROUND + "  BOOOOOOM ! \uD83D\uDCA3  " + Console.ANSI_RESET);
+            System.out.println();
             System.out.println();
 
             if (level == 1) {
@@ -273,6 +274,7 @@ public class Game {
 
         } else {
             System.out.println("                                                                 " + Console.GREEN_BACKGROUND + "  CONGRATULATIONS, YOU WON ! \uD83C\uDFC6  " + Console.ANSI_RESET);
+            System.out.println();
             System.out.println();
 
             if (level == 1) {
