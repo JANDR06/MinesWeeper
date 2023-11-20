@@ -2,6 +2,10 @@ package model;
 
 public class Initialize {
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (EASY)
+     */
     public static void initializePlayerBoardEasy(char[][] board) {
 
         char number = '0';
@@ -28,6 +32,10 @@ public class Initialize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (MEDIUM)
+     */
     public static void initializePlayerBoardMedium(char[][] board) {
 
         char letter = 'A';
@@ -54,6 +62,10 @@ public class Initialize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (HARD)
+     */
     public static void initializePlayerBoardHard(char[][] board) {
 
         char letter = 'A';

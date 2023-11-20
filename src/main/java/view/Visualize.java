@@ -3,6 +3,11 @@ package view;
 import model.Console;
 
 public class Visualize {
+
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (EASY)
+     */
     public static void showBoardEasy(char[][] board) {
 
         for (int i = 0; i  < board.length; i++) {
@@ -36,6 +41,10 @@ public class Visualize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (EASY)
+     */
     public static void removeBombsEasy(char[][] board) {
 
         for (int i = 0; i  < board.length; i++) {
@@ -71,6 +80,10 @@ public class Visualize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (MEDIUM)
+     */
     public static void showBoardMedium(char[][] board) {
 
         for (int i = 0; i  < board.length; i++) {
@@ -106,6 +119,10 @@ public class Visualize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (MEDIUM)
+     */
     public static void removeBombsMedium(char[][] board) {
 
         for (int i = 0; i  < board.length; i++) {
@@ -141,6 +158,10 @@ public class Visualize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (HARD)
+     */
     public static void showBoardHard(char[][] board) {
 
         for (int i = 0; i  < board.length; i++) {
@@ -176,6 +197,10 @@ public class Visualize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (HARD)
+     */
     public static void removeBombsHard(char[][] board) {
 
         for (int i = 0; i  < board.length; i++) {
@@ -211,6 +236,11 @@ public class Visualize {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see
+     * @param boardPlayer Matrix representing the dashboard that the user will see
+     */
     public static void showBombs(char[][] board , char[][] boardPlayer) {
 
         for (int i = 0; i < boardPlayer.length; i++) {

@@ -1,6 +1,11 @@
 package model;
 
 public class Put {
+
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (EASY)
+     */
     public static void putBombsEasy(char[][] board) {
 
         int bombs = 10;
@@ -18,6 +23,10 @@ public class Put {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (MEDIUM)
+     */
     public static void putBombsMedium(char[][] board) {
 
         int bombs = 40;
@@ -35,6 +44,10 @@ public class Put {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see (HARD)
+     */
     public static void putBombsHard(char[][] board) {
 
         int bombs = 99;
@@ -52,6 +65,10 @@ public class Put {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see
+     */
     public static void putNumbers(char[][] board) {
 
         for (int i = 0; i < board.length - 1; i++) {
@@ -79,14 +96,35 @@ public class Put {
         }
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see
+     * @param x Coordinate of board 'x'
+     * @param y Coordinate of board 'y'
+     * @return Returns true if there is a mine in the board cell and false if there is not.
+     */
     public static boolean collisionBomb(char[][] board, int x, int y) {
         return board[x][y] == '☢';
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see
+     * @param x Coordinate of board 'x'
+     * @param y Coordinate of board 'y'
+     * @return Returns false if the board cell is outside the board's limits and true if it is inside.
+     */
     public static boolean inBoard(char[][] board, int x, int y) {
         return x <= board.length - 1 && y <= board[0].length - 1 && x >= 0;
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see
+     * @param x Coordinate of board 'x'
+     * @param y Coordinate of board 'y'
+     * @return Returns the number of bombs in the 8 squares around the cell
+     */
     public static int countBombs (char[][] board, int x, int y) {
         int count = 0;
 

@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class Input {
 
+    /**
+     *
+     * @param message Message that arrives asking for an integer
+     * @return Returns an integer
+     */
     public static int getInteger(String message) {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
@@ -17,6 +22,11 @@ public class Input {
         return sc.nextInt();
     }
 
+    /**
+     *
+     * @param message Message that arrives asking for an integer
+     * @return Returns an integer
+     */
     public static int getIntegerTwo(String message) {
         Scanner sc = new Scanner(System.in);
         System.out.print(message);
@@ -29,6 +39,10 @@ public class Input {
         return sc.nextInt();
     }
 
+    /**
+     *
+     * @return Returns a coordinate as a String
+     */
     public static String getCoordinate() {
 
         Scanner sc = new Scanner(System.in);
@@ -40,6 +54,10 @@ public class Input {
         return coordinate;
     }
 
+    /**
+     *
+     * @return Returns a coordinate as a String
+     */
     public static String getCoordinateTwo() {
 
         Scanner sc = new Scanner(System.in);

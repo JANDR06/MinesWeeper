@@ -7,6 +7,9 @@ public class Game {
         menu();
     }
 
+    /**
+     * Method that displays the game menu
+     */
     public static void menu() {
 
         System.out.println();
@@ -101,6 +104,9 @@ public class Game {
         }
     }
 
+    /**
+     * Method showing game instructions
+     */
     public static void instructions() {
         System.out.println();
         System.out.println("                          " + Console.ANSI_BLUE + "-----------------------------------------      " + Console.ANSI_RESET + Console.BLUE_BACKGROUND + Console.ANSI_BLACK + "  INSTRUCTIONS \uD83D\uDCCB  " + Console.ANSI_RESET + Console.ANSI_BLUE + "      ----------------------------------------" + Console.ANSI_RESET);
@@ -115,6 +121,10 @@ public class Game {
         System.out.println("                          " + Console.ANSI_BLUE + "----------------------------------------------------------------------------------------------------------------" + Console.ANSI_RESET);
     }
 
+    /**
+     *
+     * @return Returns the level chosen by the user (1 || 2 || 3)
+     */
     public static int level() {
         int level = Input.getInteger("                                         SELECT THE LEVEL TO PLAY (1 - " + Console.GREEN_BACKGROUND + "  EASY \uD83D\uDE00  " + Console.ANSI_RESET + " / 2 - " + Console.YELLOW_BACKGROUND + "  MEDIUM \uD83D\uDE08  " + Console.ANSI_RESET + " / 3 - " + Console.RED_BACKGROUND + "  HARD \uD83D\uDC7D  " + Console.ANSI_RESET + " ): ");
 
@@ -129,6 +139,13 @@ public class Game {
         return level;
     }
 
+    /**
+     *
+     * @param board Matrix representing the dashboard that the user will not see
+     * @param boardPlayer Matrix representing the dashboard that the user will see
+     * @param countMines Mine counter that changes depending on the level (10 || 40 || 99)
+     * @param level integer chosen by the user (1 || 2 || 3)
+     */
     public static void game(char[][] board, char[][] boardPlayer, int countMines, int level) {
 
         int letter, number, num;
@@ -212,6 +229,7 @@ public class Game {
 
 
             if (num == 1) {
+                System.out.println();
                 Console.simulateLoading();
                 clearBox(boardPlayer, board, letter, number);
                 boardPlayer[letter][number] = board[letter][number];
@@ -268,7 +286,11 @@ public class Game {
         }
     }
 
-
+    /**
+     *
+     * @param boardPlayer Matrix representing the dashboard that the user will see
+     * @return Returns false if there is a '-' character in any cell on the board that the player sees and true if there is not.
+     */
     public static boolean win(char[][] boardPlayer) {
 
         for (char[] chars : boardPlayer) {
@@ -282,6 +304,13 @@ public class Game {
         return true;
     }
 
+    /**
+     *
+     * @param boardPlayer Matrix representing the dashboard that the user will see
+     * @param board Matrix representing the dashboard that the user will not see
+     * @param letter X coordinate
+     * @param number Y coordinate
+     */
     public static void clearBox(char[][] boardPlayer, char[][] board, int letter, int number) {
 
         if (letter < 0 || letter >= boardPlayer.length || number < 0 || number >= boardPlayer[0].length) {
