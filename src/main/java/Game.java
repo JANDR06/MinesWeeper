@@ -279,7 +279,6 @@ public class Game {
 
             if (level == 1) {
                 Visualize.removeBombsEasy(board);
-
             } else if (level == 2) {
                 Visualize.removeBombsMedium(board);
             } else {
