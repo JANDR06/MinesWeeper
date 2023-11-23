@@ -2,6 +2,7 @@ import controller.Input;
 import model.*;
 import view.Visualize;
 
+// WARNING!!! TO EXPERIENCE THE 100% MINESHEEPER GAME, SET THE APP THEME TO HIGH CONTRAST
 public class Game {
     public static void main(String[] args) {
         menu();
@@ -329,6 +330,7 @@ public class Game {
 
         boardPlayer[letter][number] = board[letter][number];
 
+        // COORDINATES AROUND THE SELECTED CELL
         int[] x = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] y = {-1, 0, 1, -1, 1, -1, 0, 1};
 
